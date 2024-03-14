@@ -3,30 +3,9 @@ from Event import Event, Queue
 from Scheduler import Scheduler
 from Statistics import Statistics
 
-if p.model == 3:
-    from Models.AppendableBlock.BlockCommit import BlockCommit
-    from Models.Consensus import Consensus
-    from Models.AppendableBlock.Transaction import FullTransaction as FT
-    from Models.AppendableBlock.Node import Node
-    from Models.Incentives import Incentives
-    from Models.AppendableBlock.Statistics import Statistics
-    from Models.AppendableBlock.Verification import Verification
 
-elif p.model == 2:
-    from Models.Ethereum.BlockCommit import BlockCommit
-    from Models.Ethereum.Consensus import Consensus
-    from Models.Ethereum.Transaction import LightTransaction as LT, FullTransaction as FT
-    from Models.Ethereum.Node import Node
-    from Models.Ethereum.Incentives import Incentives
 
-elif p.model == 1:
-    from Models.Bitcoin.BlockCommit import BlockCommit
-    from Models.Bitcoin.Consensus import Consensus
-    from Models.Transaction import LightTransaction as LT, FullTransaction as FT
-    from Models.Bitcoin.Node import Node
-    from Models.Incentives import Incentives
-
-elif p.model == 0:
+if p.model == 0:
     from Models.BlockCommit import BlockCommit
     from Models.Consensus import Consensus
     from Models.Transaction import LightTransaction as LT, FullTransaction as FT
