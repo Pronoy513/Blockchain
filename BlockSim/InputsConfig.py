@@ -145,17 +145,6 @@ class InputsConfig:
     #         for j in range(Dn):
     #             NODES.append(Node(deviceNodeId, "d", i))
     #             deviceNodeId += 1
-
-    #     ''' Simulation Parameters '''
-    #     # The average transaction propagation delay in seconds
-    #     propTxDelay = 0.000690847927
-
-    #     # The average transaction list propagation delay in seconds
-    #     propTxListDelay = 0.00864894
-
-    #     # The average transaction insertion delay in seconds
-    #     insertTxDelay = 0.000010367235
-
     #     # The simulation length (in seconds)
     #     simTime = 500
 
@@ -166,4 +155,4 @@ class InputsConfig:
     #     # Varify the model implementation at the end of first run
     #     VerifyImplemetation = True
 
-    #     maxTxListSize = 0
+    #     maxTxListSize = 0                                                                               

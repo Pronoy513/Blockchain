@@ -35,7 +35,10 @@ class Statistics:
             if p.model==2: Statistics.uncleBlocks += len(b.uncles)
             else: Statistics.uncleBlocks = 0
             trans += len(b.transactions)
-        Statistics.staleRate= round(Statistics.staleBlocks/Statistics.totalBlocks * 100, 2)
+            if Statistics.totalBlocks != 0:
+                Statistics.staleRate = round(Statistics.staleBlocks / Statistics.totalBlocks * 100, 2)
+            else:
+                Statistics.staleRate = 0  # or any other appropriate value when totalBlocks is zero
         if p.model==2: Statistics.uncleRate= round(Statistics.uncleBlocks/Statistics.totalBlocks * 100, 2)
         else: Statistics.uncleRate==0
         Statistics.blockData = [ Statistics.totalBlocks, Statistics.mainBlocks,  Statistics.uncleBlocks, Statistics.uncleRate, Statistics.staleBlocks, Statistics.staleRate, trans]
@@ -84,16 +87,14 @@ class Statistics:
 
         df4 = pd.DataFrame(Statistics.chain)
         #df4.columns= ['Block Depth', 'Block ID', 'Previous Block', 'Block Timestamp', 'Miner ID', '# transactions','Block Size']
-        if p.model==2: df4.columns= ['Block Depth', 'Block ID', 'Previous Block', 'Block Timestamp', 'Miner ID', '# transactions','Block Limit', 'Uncle Blocks']
-        else: df4.columns= ['Block Depth', 'Block ID', 'Previous Block', 'Block Timestamp', 'Miner ID', '# transactions', 'Block Size']
-
+        
         writer = pd.ExcelWriter(fname, engine='xlsxwriter')
         df1.to_excel(writer, sheet_name='InputConfig')
         df2.to_excel(writer, sheet_name='SimOutput')
         df3.to_excel(writer, sheet_name='Profit')
         df4.to_excel(writer,sheet_name='Chain')
 
-        writer.save()
+        writer._save()
 
     ########################################################### Reset all global variables used to calculate the simulation results ###########################################################################################
     def reset():
